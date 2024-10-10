@@ -17,7 +17,7 @@ entity "prototypes" as prototypes {
 entity "users" as users {
   id
   --
-  nickname : string : ニックネーム
+  name : string : 名前
   email : string : メールアドレス
   encrypted_password : string : パスワード
   profile : string : プロフィール
