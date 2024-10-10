@@ -1,0 +1,41 @@
+@startuml protospace181
+' hide the spot
+hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity "prototypes" as prototypes {
+  id
+  --
+  user_id : references : 投稿者のuser_id <<FK>>
+  name : string : プロトタイプの名称
+  catch_copy : string : キャッチコピー
+  concept : string : コンセプト
+}
+
+entity "users" as users {
+  id
+  --
+  nickname : string : ニックネーム
+  email : string : メールアドレス
+  encrypted_password : string : パスワード
+  profile : string : プロフィール
+  team : string : 所属
+  role : string : 役職
+}
+
+entity "comments" as comments {
+  id
+  --
+  user_id : references : 投稿者のid <<FK>>
+  prototype_id : references : 投稿しているprototypeのid<<FK>>
+  content : string : コメント内容
+}
+
+
+users ||--o{ prototypes
+users ||--o{ comments
+prototypes ||--o{ comments
+
+@enduml
