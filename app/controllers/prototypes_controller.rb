@@ -23,6 +23,17 @@ class PrototypesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @prototype.update(prototype_params)
+      redirect_to prototype_path(params[:id])
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def prototype_params
@@ -34,7 +45,7 @@ class PrototypesController < ApplicationController
   end
 
   def move_to_index
-    return if user_signed_in? && current_user.id == @item.user_id
+    return if user_signed_in? && current_user.id == @prototype.user_id
 
     redirect_to root_path
   end
