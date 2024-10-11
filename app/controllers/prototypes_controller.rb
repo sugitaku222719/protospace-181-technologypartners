@@ -23,6 +23,7 @@ class PrototypesController < ApplicationController
   def show
   end
 
+
   def edit
   end
 
@@ -32,6 +33,11 @@ class PrototypesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @prototype.destroy
+    redirect_to root_path
   end
 
   private
