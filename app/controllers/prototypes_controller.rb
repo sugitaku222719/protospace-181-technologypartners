@@ -4,6 +4,7 @@ class PrototypesController < ApplicationController
   before_action :move_to_index, only: [:edit, :destroy]
 
   def index
+    @prototypes = Prototype.includes(:user).order("created_at DESC")
   end
 
   def new
