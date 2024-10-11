@@ -20,6 +20,9 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def prototype_params
@@ -27,12 +30,12 @@ class PrototypesController < ApplicationController
   end
 
   def set_prototype
-    @prototype = Prototype.find(params[:id])
+    @prototype = Prototype.find(1)
   end
 
   def move_to_index
     return if user_signed_in? && current_user.id == @item.user_id
+
     redirect_to root_path
   end
-
 end
